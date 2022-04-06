@@ -1,0 +1,45 @@
+{
+  "name": "ax/live-song",
+  "description": "API for Live Song (Nuxt)",
+  "keywords": [
+    "yii2",
+    "api"
+  ],
+  "homepage": "http://www.yiiframework.com/",
+  "type": "project",
+  "license": "BSD-3-Clause",
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=7.4",
+    "yiisoft/yii2": "~2.0.40",
+    "vlucas/phpdotenv": "^4.1",
+    "yiisoft/yii2-symfonymailer": "~2.0.0"
+  },
+  "require-dev": {
+    "yiisoft/yii2-gii": "~2.1.0"
+  },
+  "config": {
+    "vendor-dir": "api/vendor",
+    "process-timeout": 1800,
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "fxp-asset": {
+      "enabled": false
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\": "api/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
+}

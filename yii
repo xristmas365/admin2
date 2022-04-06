@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+<?php
+
+use Dotenv\Dotenv;
+use yii\helpers\VarDumper;
+
+define('YII_ENV', 'dev');
+define('YII_DEBUG', true);
+
+require __DIR__ . '/api/vendor/autoload.php';
+require __DIR__ . '/api/vendor/yiisoft/yii2/Yii.php';
+
+/**
+ * .env Project support
+ */
+(Dotenv::createImmutable(__DIR__))->load();
+
+if(getenv('APP_ENV') === 'dev') {
+  function dd($var)
+  {
+    VarDumper::dump($var);
+    echo PHP_EOL;
+    die;
+  }
+}
+
+$config = require __DIR__ . '/api/config/console.php';
+
+$application = new yii\console\Application($config);
+$exitCode = $application->run();
+exit($exitCode);
