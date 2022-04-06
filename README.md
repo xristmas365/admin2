@@ -19,7 +19,7 @@ $ yarn generate
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
-## Special Directories
+## Nuxt Directories
 
 You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
 
@@ -67,3 +67,33 @@ More information about the usage of this directory in [the documentation](https:
 This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+
+## Rest API
+### `Apache2 config`
+vhosts.conf (MacOS)
+```bash
+<VirtualHost *:80>
+  DocumentRoot "/Users/{{user}}/Sites/admin2/api/public"
+  ServerName api.localhost
+<Directory "/Users/{{user}}/Sites/admin2/api/public">
+    Require all granted
+    RewriteEngine on
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule . index.php [L]
+</Directory>
+</VirtualHost>
+```
+
+### `Yii2 config`
+Copy file `.env` from `.env-example`
+```bash
+# install Vendor
+$ composer install
+
+# Runtime permissions
+$ chmod -R 777 api/runtime 
+
+# Run Migrations
+$ ./yii migrate
+```
